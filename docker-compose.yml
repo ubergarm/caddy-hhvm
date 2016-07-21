@@ -1,0 +1,22 @@
+version: '2'
+services:
+    hhvm:
+        build:
+            context: .
+            dockerfile: Dockerfile.hhvm
+        image: ubergarm/hhvm
+        volumes:
+            - /var/run/hhvm/
+            - ./html:/html
+    caddy:
+        build:
+            context: .
+            dockerfile: Dockerfile.caddy
+        image: ubergarm/caddy
+        volumes_from:
+            - hhvm
+        volumes:
+            - ./html:/html
+        ports:
+            - "0.0.0.0:80:80"
+            - "0.0.0.0:443:443"

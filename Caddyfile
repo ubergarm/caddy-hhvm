@@ -1,0 +1,6 @@
+0.0.0.0:80
+fastcgi / unix:/var/run/hhvm/sock php
+root /html
+log stdout
+errors stderr
+#tls yourname@yourdomain.com
